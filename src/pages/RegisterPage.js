@@ -14,9 +14,30 @@ const RegisterPage = () => {
 
 
   const handleSubmit = async (event) => { 
-    event.preventDefault(); //form은 백엔드를 호출하기 위해 리프레쉬를 시키지만 리액트는 reload를 안하기 위해?
+    event.preventDefault(); // form 제출 시 페이지 새로고침 방지
     //오류 핸들링
     try{
+      //이름 미입력 오류
+      if (!name) {
+        throw new Error("이름을 입력해주세요.");
+      }
+
+      //이메일 미입력 오류
+      if (!email) {
+        throw new Error("이메일을 입력해주세요.");
+      }
+
+      //패스워드 미입력 오류
+      if (!password) {
+        throw new Error("패스워드를 입력해주세요.");
+      }
+
+      //패스워드 확인 미입력 오류
+      if (!secPassword) {
+        throw new Error("패스워드 확인을 입력해주세요.");
+      }
+
+      //패스워드 불일치 오류
       if(password !== secPassword){
         throw new Error("패스워드가 일치하지 않습니다. 다시 입력해주세요.");
       }

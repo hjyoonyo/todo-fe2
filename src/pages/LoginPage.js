@@ -16,6 +16,7 @@ const LoginPage = () => {
     event.preventDefault();
     try{
       const response = await api.post('/user/login', { email, password});
+
       if(response.status === 200){
         setUser(response.data.user);
         sessionStorage.setItem("token",response.data.token); //토큰값 저장
