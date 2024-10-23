@@ -55,6 +55,16 @@ button{
   background-color: lightblue;
   color: #ffffff;
 }
+.button-logout{
+  background-color: transparent;
+  border: none;
+  color: darkgray;
+  margin-top: 3px;
+  padding: 3px;
+}
+.button-logout:hover{
+  color: black;
+}
 
 .item-complete{
   background-color: gainsboro;

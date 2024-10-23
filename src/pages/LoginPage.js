@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 import api from "../utils/api";
 
-const LoginPage = () => {
+const LoginPage = ({ user, setUser }) => {
   const[email,setEmail]=useState('');
   const [password,setPassword]=useState('');
   const [error,setError]=useState('');
-  const [user,setUser]=useState('');
   const navigate = useNavigate();
 
   const handleLogin = async (event) => {
@@ -32,6 +30,11 @@ const LoginPage = () => {
       setError(error.message);
     }
   }
+
+  if (user) {
+    return <Navigate to="/" />; //유저 값이 있으면 투두페이지로 간다.
+  }
+
   return (
     <div className="display-center" onSubmit={handleLogin}>
       {error && <div className="red-error">{error}</div>}
